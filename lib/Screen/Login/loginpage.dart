@@ -28,11 +28,7 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 30),
-
-                  // logo
                   Image.asset("assets/LOGINLOGO.png"),
-
-                  // Zırhlıoğlu Online'a Hoşgeldiniz
                   const Padding(
                     padding: EdgeInsets.all(5),
                     child: Text(
@@ -53,10 +49,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-
                   const SizedBox(height: 25),
-
-                  // username textfield
                   MyTextField(
                     validator: (usernameController) {
                       if (usernameController == emptyTextSelectionControls) {}
@@ -65,19 +58,13 @@ class LoginPage extends StatelessWidget {
                     hintText: 'Username',
                     obscureText: false,
                   ),
-
                   const SizedBox(height: 10),
-
-                  // password textfield
                   MyTextField(
                     controller: passwordController,
                     hintText: 'Password',
                     obscureText: true,
                   ),
-
                   const SizedBox(height: 10),
-
-                  // forgot password?
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
@@ -91,10 +78,7 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   const SizedBox(height: 10),
-
-                  // sign in button
                   SignButton(onTap: () {
                     if (usernameController.text == 'Ali' &&
                         passwordController.text == '111') {

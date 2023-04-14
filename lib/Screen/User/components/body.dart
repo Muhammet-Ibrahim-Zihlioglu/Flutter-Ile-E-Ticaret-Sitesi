@@ -8,7 +8,6 @@ class Body extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          //ProfilePic(),
           SizedBox(height: 20),
           ProfileMenu(
             text: "Hesabım",

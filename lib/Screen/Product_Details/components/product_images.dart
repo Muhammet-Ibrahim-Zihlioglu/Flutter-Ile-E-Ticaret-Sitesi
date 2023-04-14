@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Product/product.dart';
 
-
 class ProductImages extends StatefulWidget {
   const ProductImages({
     Key? key,
@@ -15,7 +14,6 @@ class ProductImages extends StatefulWidget {
 }
 
 class _ProductImagesState extends State<ProductImages> {
-
   int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
@@ -31,7 +29,6 @@ class _ProductImagesState extends State<ProductImages> {
             ),
           ),
         ),
-        // SizedBox(height: getProportionateScreenWidth(20)),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
