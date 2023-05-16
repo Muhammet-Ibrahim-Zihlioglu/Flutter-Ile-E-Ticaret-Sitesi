@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 
-
-
 class SpecialOffers extends StatelessWidget {
   const SpecialOffers({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-         Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: const [
             Padding(
-              padding:  EdgeInsets.only(left: (20)),
+              padding: EdgeInsets.only(left: (20)),
               child: Text(
                 'Sizin İçin Seçtiklerimiz',
                 style: TextStyle(
@@ -27,8 +24,6 @@ class SpecialOffers extends StatelessWidget {
             ),
           ],
         ),
-        
-        
         const SizedBox(height: (20)),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -37,16 +32,28 @@ class SpecialOffers extends StatelessWidget {
               SpecialOfferCard(
                 image: "assets/arkaplan1.png",
                 category: "Bilgisayar",
-                numOfBrands: 18,
-                press: () {},
+                numOfBrands: 5,
+                press: () {
+                  Navigator.pushNamed(context, '/slaptop');
+                },
               ),
               SpecialOfferCard(
                 image: "assets/arkaplan2.png",
                 category: "Telefon",
-                numOfBrands: 24,
-                press: () {},
+                numOfBrands: 5,
+                press: () {
+                  Navigator.pushNamed(context, '/stelephone');
+                },
               ),
-             const SizedBox(width: (20)),
+              const SizedBox(width: (20)),
+              SpecialOfferCard(
+                category: "Oyuncuya Özel",
+                image: "assets/oyuncuyaozel.png",
+                numOfBrands: 16,
+                press: () {
+                  Navigator.pushNamed(context, '/player');
+                },
+              )
             ],
           ),
         ),
@@ -81,18 +88,17 @@ class SpecialOfferCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
-               
                 Image.asset(
                   image,
                   fit: BoxFit.cover,
                 ),
                 Container(
-                  decoration:const  BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.white10,
+                        Colors.grey.shade400,
                         Colors.white12,
                       ],
                     ),
@@ -110,11 +116,14 @@ class SpecialOfferCard extends StatelessWidget {
                         TextSpan(
                           text: "$category\n",
                           style: const TextStyle(
+                            color: Colors.black,
                             fontSize: (18),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextSpan(text: "$numOfBrands Brands")
+                        TextSpan(
+                            text: "$numOfBrands Brands",
+                            style: const TextStyle(color: Colors.black))
                       ],
                     ),
                   ),

@@ -5,9 +5,11 @@ import 'package:zrhonline/Component/registerbutton.dart';
 import 'package:zrhonline/Screen/Home/home.dart';
 import 'package:zrhonline/Screen/Register/register.dart';
 
+import '../../Services/auth_service.dart';
+
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
-
+  AuthService authService = AuthService();
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -80,25 +82,11 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   SignButton(onTap: () {
-                    if (usernameController.text == 'Ali' &&
-                        passwordController.text == '111') {
-                      return Navigator.pushNamed(context, "/loginsuccess");
-                    } else {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) => AlertDialog(
-                                title: const Text('HATA'),
-                                content: const Text('Kullanıcı Bulunamadı'),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: const Text('Cancel')),
-                                  TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: const Text('Ok'))
-                                ],
-                              ));
-                    }
+                    authService
+                        .signIn(
+                            usernameController.text, passwordController.text)
+                        .then((value) =>
+                            Navigator.pushNamed(context, "/loginsuccess"));
                   }),
                 ],
               ),

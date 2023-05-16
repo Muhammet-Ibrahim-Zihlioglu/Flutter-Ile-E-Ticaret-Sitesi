@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:zrhonline/Product/product.dart';
 import '../../../Component/defaultbutton.dart';
 
-class CheckoutCard extends StatelessWidget {
+class CheckoutCard extends StatefulWidget {
   const CheckoutCard({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<CheckoutCard> createState() => _CheckoutCardState();
+}
+
+class _CheckoutCardState extends State<CheckoutCard> {
+  @override
   Widget build(BuildContext context) {
+    double toplam = 0;
+    setState(() {
+      for (int i = 0; i < demoProducts.length; i++) {
+        if (demoProducts[i].isCart == true) {
+          toplam += demoProducts[i].price;
+        }
+      }
+    });
+
     return Container(
       padding: const EdgeInsets.symmetric(
         vertical: (15),
@@ -29,19 +44,21 @@ class CheckoutCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text.rich(
+                Text.rich(
                   TextSpan(
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "48000.00 /TRY",
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        text: " $toplam /TRY",
+                        style:
+                            const TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],
                   ),
                 ),
+                const SizedBox(height: 10),
                 SizedBox(
-                  width: (190),
+                  width: (140),
                   child: DefaultButton(
                     text: "Check Out",
                     press: () => Navigator.pushNamed(context, '/order'),

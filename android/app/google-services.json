@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213550311061",
+    "project_id": "zrhonli",
+    "storage_bucket": "zrhonli.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213550311061:android:9e385d969d37f0d3cb9d9c",
+        "android_client_info": {
+          "package_name": "com.example.zrhonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213550311061-dhako6am76vcsdvlmsobrmqj1lat2sub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABLR7qP8gKwPLBGTAiewdCxMJxeAL-5JU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213550311061-dhako6am76vcsdvlmsobrmqj1lat2sub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

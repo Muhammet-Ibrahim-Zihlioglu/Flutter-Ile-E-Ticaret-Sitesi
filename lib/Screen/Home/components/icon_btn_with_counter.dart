@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({
     Key? key,
@@ -23,15 +21,15 @@ class IconBtnWithCounter extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Container(
-            padding: const EdgeInsets.all((12)),
-            height: (46),
-            width: (46),
-            decoration: const  BoxDecoration(
-              color: Colors.white38,
-              shape: BoxShape.circle,
-            ),
-          child: Image.asset(svgSrc)),
-           if (numOfitem != 0)
+              padding: const EdgeInsets.all((12)),
+              height: (46),
+              width: (46),
+              decoration: const BoxDecoration(
+                color: Colors.white38,
+                shape: BoxShape.circle,
+              ),
+              child: Image.asset(svgSrc)),
+          if (numOfitem != 0)
             Positioned(
               top: -3,
               right: 0,
@@ -39,7 +37,7 @@ class IconBtnWithCounter extends StatelessWidget {
                 height: 16,
                 width: 16,
                 decoration: BoxDecoration(
-                  color:const Color(0xFFFF4848),
+                  color: const Color(0xFFFF4848),
                   shape: BoxShape.circle,
                   border: Border.all(width: 1.5, color: Colors.white),
                 ),

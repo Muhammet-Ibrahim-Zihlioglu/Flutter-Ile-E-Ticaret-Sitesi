@@ -3,10 +3,11 @@ import 'package:zrhonline/Component/registerscreenbutton.dart';
 import 'package:zrhonline/Screen/Login/loginpage.dart';
 
 import '../../Component/mytextfield.dart';
+import '../../Services/auth_service.dart';
 
 class Register extends StatelessWidget {
   Register({super.key});
-
+  AuthService authService = AuthService();
   final email = TextEditingController();
   final username = TextEditingController();
   final password = TextEditingController();
@@ -64,7 +65,29 @@ class Register extends StatelessWidget {
                             username.text.isNotEmpty &&
                             password.text.isNotEmpty &&
                             password.text.isNotEmpty) {
-                          Navigator.popAndPushNamed(context, "/signsuccess");
+                          if (password.text == passwordagain.text) {
+                            authService.createPerson(
+                                username.text, email.text, password.text);
+                            Navigator.pushNamed(context, "/signsuccess");
+                          } else {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                      title: const Text('HATA'),
+                                      content: const Text(
+                                          'Girilen Şifreler Aynı Değil'),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: const Text('Cancel')),
+                                        TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context),
+                                            child: const Text('Ok'))
+                                      ],
+                                    ));
+                          }
                         } else {
                           showDialog(
                               context: context,

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 
-
 class CustomAppBar extends StatelessWidget {
   final double rating;
 
-  const CustomAppBar({super.key,required this.rating});
-  
+  const CustomAppBar({super.key, required this.rating});
+
   Size get preferredSize => Size.fromHeight(AppBar().preferredSize.height);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: (20)),
+        padding: const EdgeInsets.symmetric(horizontal: (20)),
         child: Row(
           children: [
             SizedBox(
@@ -24,7 +22,6 @@ class CustomAppBar extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(60),
                   ),
-                
                   backgroundColor: Colors.white,
                   padding: EdgeInsets.zero,
                 ),

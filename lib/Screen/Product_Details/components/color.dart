@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/rounded%C4%B1conbtn.dart';
 import 'package:zrhonline/Product/product.dart';
 
-class ColorDots extends StatelessWidget {
+class ColorDots extends StatefulWidget {
   const ColorDots({
     Key? key,
     required this.product,
@@ -11,63 +11,46 @@ class ColorDots extends StatelessWidget {
   final Product product;
 
   @override
-  Widget build(BuildContext context) {
-    int selectedColor = 3;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: (20)),
-      child: Row(
-        children: [
-          ...List.generate(
-            product.colors.length,
-            (index) => ColorDot(
-              color: product.colors[index],
-              isSelected: index == selectedColor,
-            ),
-          ),
-          const Spacer(),
-          RoundedIconBtn(
-            icon: Icons.remove,
-            press: () {},
-          ),
-          const SizedBox(width: (20)),
-          RoundedIconBtn(
-            icon: Icons.add,
-            showShadow: true,
-            press: () {},
-          ),
-        ],
-      ),
-    );
-  }
+  _ColorDots createState() => _ColorDots();
 }
 
-class ColorDot extends StatelessWidget {
-  const ColorDot({
-    Key? key,
-    required this.color,
-    this.isSelected = false,
-  }) : super(key: key);
-
-  final Color color;
-  final bool isSelected;
-
+class _ColorDots extends State<ColorDots> {
+  int selectedImage = 0;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(right: 2),
-      padding: const EdgeInsets.all((8)),
-      height: (40),
-      width: (40),
-      decoration: BoxDecoration(
-        color: Colors.transparent,
-        border:
-            Border.all(color: isSelected ? Colors.white10 : Colors.transparent),
-        shape: BoxShape.circle,
-      ),
-      child: DecoratedBox(
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ...List.generate(
+                widget.product.colors.length,
+                (index) => buildSmallProductPreview(
+                    index, widget.product.colors[index])),
+          ],
+        )
+      ],
+    );
+  }
+
+  GestureDetector buildSmallProductPreview(int index, Color color) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedImage = index;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(seconds: 1),
+        margin: const EdgeInsets.only(right: 15),
+        padding: const EdgeInsets.all(8),
+        height: (48),
+        width: (48),
         decoration: BoxDecoration(
           color: color,
-          shape: BoxShape.circle,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+              color: Colors.black.withOpacity(selectedImage == index ? 1 : 0)),
         ),
       ),
     );

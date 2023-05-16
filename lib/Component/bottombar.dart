@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum MenuState { home, favourites, profile }
+enum MenuState { home, favourites, profile, cart }
 
 class BottomBar extends StatelessWidget {
   const BottomBar({
@@ -41,7 +41,8 @@ class BottomBar extends StatelessWidget {
                       ? const Color.fromARGB(137, 0, 0, 255)
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, "/home"),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, "/home"),
               ),
               IconButton(
                 icon: Icon(
@@ -50,7 +51,17 @@ class BottomBar extends StatelessWidget {
                       ? const Color.fromARGB(137, 0, 0, 255)
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, "/favourites"),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, "/favourites"),
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.shopping_basket_sharp,
+                  color: MenuState.cart == selectedMenu
+                      ? const Color.fromARGB(137, 0, 0, 255)
+                      : inActiveIconColor,
+                ),
+                onPressed: () => Navigator.pushReplacementNamed(context, "/cart"),
               ),
               IconButton(
                 icon: Icon(
@@ -59,7 +70,8 @@ class BottomBar extends StatelessWidget {
                       ? const Color.fromARGB(137, 0, 0, 255)
                       : inActiveIconColor,
                 ),
-                onPressed: () => Navigator.pushNamed(context, "/profile"),
+                onPressed: () =>
+                    Navigator.pushReplacementNamed(context, "/profile"),
               ),
             ],
           )),

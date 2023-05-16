@@ -21,11 +21,15 @@ class _ProductImagesState extends State<ProductImages> {
       children: [
         SizedBox(
           width: (238),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Hero(
-              tag: widget.product.id.toString(),
-              child: Image.asset(widget.product.images[selectedImage]),
+          child: Hero(
+            tag: widget.product.id.toString(),
+            child: Container(
+              width: 500,
+              height: 250,
+              child: Image.asset(
+                widget.product.images[selectedImage],
+                fit: BoxFit.fill,
+              ),
             ),
           ),
         ),
@@ -48,7 +52,7 @@ class _ProductImagesState extends State<ProductImages> {
         });
       },
       child: AnimatedContainer(
-        duration: const Duration(),
+        duration: const Duration(seconds: 5),
         margin: const EdgeInsets.only(right: 15),
         padding: const EdgeInsets.all(8),
         height: (48),
@@ -59,7 +63,7 @@ class _ProductImagesState extends State<ProductImages> {
           border: Border.all(
               color: Colors.white.withOpacity(selectedImage == index ? 1 : 0)),
         ),
-        child: Image.asset(widget.product.images[index]),
+        child: Image.asset(widget.product.images[index], fit: BoxFit.fill),
       ),
     );
   }

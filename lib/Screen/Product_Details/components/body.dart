@@ -8,29 +8,30 @@ import 'package:zrhonline/Screen/Product_Details/components/top_ronded_container
 import 'product_description.dart';
 import 'product_images.dart';
 
-class Body extends StatelessWidget {
-  final Product product;
-
+class Body extends StatefulWidget {
   const Body({Key? key, required this.product}) : super(key: key);
+  final Product product;
+  _Body createState() => _Body();
+}
 
+class _Body extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        ProductImages(product: product),
+        ProductImages(product: widget.product),
         TopRoundedContainer(
           color: Colors.white,
           child: Column(
             children: [
               ProductDescription(
-                product: product,
-                pressOnSeeMore: () {},
+                product: widget.product,
               ),
               TopRoundedContainer(
                 color: const Color(0xFFF6F7F9),
                 child: Column(
                   children: [
-                    ColorDots(product: product),
+                    ColorDots(product: widget.product),
                     TopRoundedContainer(
                       color: Colors.white,
                       child: Padding(
@@ -40,12 +41,15 @@ class Body extends StatelessWidget {
                             bottom: (40),
                             top: (15),
                           ),
-                          child: DetailsButton(
-                              onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const Cart_Screen())))),
+                          child: DetailsButton(onTap: () {
+                            setState(() {
+                              widget.product.isCart = !widget.product.isCart;
+                            });
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Cart_Screen()));
+                          })),
                     ),
                   ],
                 ),

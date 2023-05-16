@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Product/product.dart';
 
-class ProductDescription extends StatelessWidget {
+class ProductDescription extends StatefulWidget {
   const ProductDescription({
     Key? key,
     required this.product,
-    this.pressOnSeeMore,
   }) : super(key: key);
 
   final Product product;
-  final GestureTapCallback? pressOnSeeMore;
 
+  @override
+  State<ProductDescription> createState() => _ProductDescriptionState();
+}
+
+class _ProductDescriptionState extends State<ProductDescription> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,30 +22,38 @@ class ProductDescription extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: (20)),
           child: Text(
-            product.title,
+            widget.product.title,
             style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
           ),
         ),
         Align(
           alignment: Alignment.centerRight,
           child: Container(
-            padding: const EdgeInsets.all((15)),
-            width: (64),
-            decoration: BoxDecoration(
-              color: product.isFavourite
-                  ? const Color(0xFFFFE6E6)
-                  : const Color(0xFFF5F6F9),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
+            color: Colors.grey.shade900,
+            width: 55,
+            height: 55,
+            child: InkWell(
+              borderRadius: BorderRadius.circular(30),
+              onTap: () {
+                setState(() {
+                  widget.product.isFavourite = !widget.product.isFavourite;
+                  Image.asset("assets/ikonlar/kalp.png",
+                      color: widget.product.isFavourite
+                          ? Colors.white
+                          : Colors.red);
+                });
+              },
+              child: Container(
+                padding: const EdgeInsets.all((10)),
+                height: (50),
+                width: (50),
+                child: Image.asset(
+                  "assets/ikonlar/kalp.png",
+                  color: widget.product.isFavourite
+                      ? Colors.red
+                      : const Color(0xFFDBDEE4),
+                ),
               ),
-            ),
-            child: Image.asset(
-              "assets/ikonlar/kalp.png",
-              color: product.isFavourite
-                  ? const Color(0xFFFF4848)
-                  : const Color(0xFFDBDEE4),
-              height: (16),
             ),
           ),
         ),
@@ -52,7 +63,7 @@ class ProductDescription extends StatelessWidget {
             right: (64),
           ),
           child: Text(
-            product.description,
+            widget.product.description,
             style: const TextStyle(fontSize: 20),
           ),
         ),

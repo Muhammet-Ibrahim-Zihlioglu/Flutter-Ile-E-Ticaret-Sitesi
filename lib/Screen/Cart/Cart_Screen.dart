@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../../Cart_product/cart.dart';
+import 'package:zrhonline/Component/bottombar.dart';
 import '../../Product/product.dart';
 import '../../Product/product_card.dart';
-import '../Home/components/body.dart';
 import 'components/CheckoutCard.dart';
-import 'components/cart_card.dart';
 
 class Cart_Screen extends StatelessWidget {
   const Cart_Screen({super.key});
@@ -16,24 +13,30 @@ class Cart_Screen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: buildAppBar(context),
       body: Scaffold(
-          body: ListView(
-        children: [
-          SafeArea(
-              child: ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 100),
-            itemCount: demoCarts.length,
-            shrinkWrap: true,
-            itemBuilder: (context, index) {
-              return Container(
-                  child: Dismissible(
-                key: Key(demoCarts[index].product.id.toString()),
-                child: CartCard(cart: demoCarts[index]),
-              ));
-            },
-          ))
-        ],
+          body: Scaffold(
+        body: ListView(
+          children: [
+            Column(
+              children: [
+                ...List.generate(
+                  demoProducts.length,
+                  (index) {
+                    if (demoProducts[index].isCart) {
+                      return ProductCard(product: demoProducts[index]);
+                    }
+
+                    return const SizedBox(
+                      width: 0,
+                    );
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+        bottomNavigationBar: const CheckoutCard(),
       )),
-      bottomNavigationBar: const CheckoutCard(),
+      bottomNavigationBar: const BottomBar(selectedMenu: MenuState.cart),
     );
   }
 
