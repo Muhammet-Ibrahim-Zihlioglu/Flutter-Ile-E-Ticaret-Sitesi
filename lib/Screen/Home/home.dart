@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
+        automaticallyImplyLeading: false,
         title: const Text(
           'Zırhloğlu Online',
           style: TextStyle(color: Color.fromARGB(234, 6, 0, 183), fontSize: 25),

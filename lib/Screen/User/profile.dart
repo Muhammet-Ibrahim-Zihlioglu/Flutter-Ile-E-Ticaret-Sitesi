@@ -3,8 +3,12 @@ import 'package:zrhonline/Component/bottombar.dart';
 import 'package:zrhonline/Screen/Home/components/body.dart';
 import 'package:zrhonline/Screen/User/components/profilmenu.dart';
 
+import 'package:flutter/material.dart';
+import 'package:zrhonline/Component/bottombar.dart';
+import 'package:zrhonline/Screen/User/components/profilmenu.dart';
+
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  const Profile({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +16,7 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
+        automaticallyImplyLeading: false,
         title: const Text(
           'Zırhloğlu Online',
           style: TextStyle(color: Color.fromARGB(234, 6, 0, 183), fontSize: 25),

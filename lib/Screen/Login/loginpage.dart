@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/mytextfield.dart';
 import 'package:zrhonline/Component/signbutton.dart';
@@ -13,8 +14,6 @@ class LoginPage extends StatelessWidget {
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
-
-  // sign user in method
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +52,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 25),
                   MyTextField(
-                    validator: (usernameController) {
-                      if (usernameController == emptyTextSelectionControls) {}
-                    },
                     controller: usernameController,
-                    hintText: 'Username',
+                    hintText: 'Email',
                     obscureText: false,
                   ),
                   const SizedBox(height: 10),

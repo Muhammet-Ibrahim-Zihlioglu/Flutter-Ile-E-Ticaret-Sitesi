@@ -66,9 +66,32 @@ class Register extends StatelessWidget {
                             password.text.isNotEmpty &&
                             password.text.isNotEmpty) {
                           if (password.text == passwordagain.text) {
-                            authService.createPerson(
-                                username.text, email.text, password.text);
-                            Navigator.pushNamed(context, "/signsuccess");
+                            RegExp gmailRegex =
+                                RegExp(r'^[\w-\.]+@gmail\.com$');
+                            if (gmailRegex.hasMatch(email.text)) {
+                              authService.createPerson(
+                                  username.text, email.text, password.text);
+                              Navigator.pushNamed(context, "/signsuccess");
+                            } else {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) =>
+                                      AlertDialog(
+                                        title: const Text('HATA'),
+                                        content: const Text(
+                                            'Geçerli bir eposta giriniz.'),
+                                        actions: [
+                                          TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              child: const Text('Cancel')),
+                                          TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              child: const Text('Ok'))
+                                        ],
+                                      ));
+                            }
                           } else {
                             showDialog(
                                 context: context,

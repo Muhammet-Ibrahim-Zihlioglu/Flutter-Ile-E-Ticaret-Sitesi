@@ -43,6 +43,8 @@ class Cart_Screen extends StatelessWidget {
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.black,
+      centerTitle: true,
+      automaticallyImplyLeading: false,
       title: Column(
         children: const [
           Text(
