@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/defaultbutton.dart';
 import 'package:zrhonline/Component/detailsbutton.dart';
-import 'package:zrhonline/Product/product.dart';
+import 'package:zrhonline/Models/product.dart';
 import 'package:zrhonline/Screen/Cart/Cart_Screen.dart';
 import 'package:zrhonline/Screen/Product_Details/components/color.dart';
 import 'package:zrhonline/Screen/Product_Details/components/top_ronded_container.dart';
@@ -43,7 +43,10 @@ class _Body extends State<Body> {
                           ),
                           child: DetailsButton(onTap: () {
                             setState(() {
-                              widget.product.isCart = !widget.product.isCart;
+                              if (widget.product.isCart = true) {
+                              } else {
+                                widget.product.isCart = !widget.product.isCart;
+                              }
                             });
                             Navigator.push(
                                 context,

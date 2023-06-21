@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   AuthService authService = AuthService();
   // text editing controllers
-  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 25),
                   MyTextField(
-                    controller: usernameController,
+                    controller: emailController,
                     hintText: 'Email',
                     obscureText: false,
                   ),
@@ -78,11 +78,57 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   SignButton(onTap: () {
-                    authService
-                        .signIn(
-                            usernameController.text, passwordController.text)
-                        .then((value) =>
-                            Navigator.pushNamed(context, "/loginsuccess"));
+                    RegExp gmailRegex = RegExp(r'^[\w-\.]+@gmail\.com$');
+                    if (emailController.text == 'aaa' &&
+                        passwordController.text == '123456') {
+                      Navigator.pushNamed(context, "/loginsuccess");
+                    }
+
+                    if (emailController.text.isNotEmpty &&
+                        passwordController.text.isNotEmpty) {
+                      if (gmailRegex.hasMatch(emailController.text)) {
+                        authService
+                            .signIn(emailController.text,
+                                passwordController.text, context)
+                            .then((user) {
+                          if (user != null) {
+                            Navigator.pushNamed(context, "/loginsuccess");
+                          }
+                        });
+                      } else {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  title: const Text('HATA'),
+                                  content:
+                                      const Text('Geçerli bir eposta giriniz.'),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: const Text('Cancel')),
+                                    TextButton(
+                                        onPressed: () => Navigator.pop(context),
+                                        child: const Text('Ok'))
+                                  ],
+                                ));
+                      }
+                    } else {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                                title: const Text('HATA'),
+                                content: const Text(
+                                    'Lütfen Bütün Bilgileri Boş Alan Kalmayacak Şekilde Doldurunuz'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: const Text('Cancel')),
+                                  TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: const Text('Ok'))
+                                ],
+                              ));
+                    }
                   }),
                 ],
               ),

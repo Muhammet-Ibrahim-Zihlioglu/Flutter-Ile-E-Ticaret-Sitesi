@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Product {
+  int sales;
   final int id;
   final String title, description;
   final List<String> images;
   final List<Color> colors;
-  final double rating, price;
+  double rating, price;
   bool isFavourite, isPopular;
   bool isCart;
   final bool isearphone,
@@ -18,6 +19,7 @@ class Product {
       iswatch;
   final bool isslaptop, isstelephone, isspecificplayer;
   Product({
+    this.sales = 0,
     required this.id,
     required this.images,
     required this.colors,
@@ -46,6 +48,7 @@ class Product {
 
 List<Product> demoProducts = [
   Product(
+    sales: 1,
     id: 1,
     images: [
       "assets/iphone14prosiyah.png",
@@ -71,6 +74,7 @@ List<Product> demoProducts = [
     isstelephone: true,
   ),
   Product(
+      sales: 2,
       id: 2,
       images: [
         "assets/huaweisaatsiyah.png",
@@ -93,6 +97,7 @@ List<Product> demoProducts = [
       iswatch: true),
   Product(
     id: 3,
+    sales: 2,
     images: [
       "assets/Monsternotebook.png",
       "assets/Monsternotebook1.png",
@@ -114,6 +119,7 @@ List<Product> demoProducts = [
     isslaptop: true,
   ),
   Product(
+    sales: 0,
     id: 4,
     images: [
       "assets/airpod3nesil.png",
@@ -135,6 +141,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+      sales: 0,
       id: 5,
       images: [
         "assets/qcyT13-1.png",
@@ -151,6 +158,7 @@ List<Product> demoProducts = [
       rating: 4.5,
       isearphone: true),
   Product(
+      sales: 0,
       id: 6,
       images: [
         "assets/Sonykulaküstü.png",
@@ -165,6 +173,7 @@ List<Product> demoProducts = [
       rating: 4.7,
       isearphone: true),
   Product(
+    sales: 0,
     id: 7,
     images: ["assets/barbantimobile-1.png", "assets/barbantimobile-2.png"],
     colors: const [
@@ -180,6 +189,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 8,
     images: ["assets/Xiomi-1.png", "assets/Xiomi-2.png"],
     colors: const [Colors.black, Colors.white],
@@ -191,6 +201,7 @@ List<Product> demoProducts = [
     isearphone: true,
   ),
   Product(
+    sales: 0,
     id: 9,
     images: [
       "assets/deilmi-1.png",
@@ -207,6 +218,7 @@ List<Product> demoProducts = [
     isearphone: true,
   ),
   Product(
+      sales: 0,
       id: 10,
       images: [
         "assets/matebookd15-1.png",
@@ -225,6 +237,7 @@ List<Product> demoProducts = [
       isforyou: true,
       isslaptop: true),
   Product(
+    sales: 0,
     id: 11,
     images: [
       "assets/G870-1.png",
@@ -244,6 +257,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 12,
     images: [
       "assets/tufa15-1.png",
@@ -263,6 +277,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 13,
     images: [
       "assets/m2-1.png",
@@ -284,6 +299,7 @@ List<Product> demoProducts = [
     isslaptop: true,
   ),
   Product(
+    sales: 0,
     id: 14,
     images: [
       "assets/c500-1.png",
@@ -301,6 +317,7 @@ List<Product> demoProducts = [
     islaptop: true,
   ),
   Product(
+    sales: 0,
     id: 15,
     images: [
       "assets/ps5-1.png",
@@ -321,6 +338,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 16,
     images: [
       "assets/ps4-1.png",
@@ -337,6 +355,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 17,
     images: [
       "assets/ps4kol-1.png",
@@ -355,6 +374,7 @@ List<Product> demoProducts = [
     isplaystation: true,
   ),
   Product(
+    sales: 0,
     id: 18,
     images: [
       "assets/fifa23.png",
@@ -371,6 +391,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 19,
     images: [
       "assets/gta5.png",
@@ -387,6 +408,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 20,
     images: [
       "assets/ps3kol.png",
@@ -401,6 +423,7 @@ List<Product> demoProducts = [
     isplaystation: true,
   ),
   Product(
+    sales: 0,
     id: 21,
     images: [
       "assets/xiomipad-1.png",
@@ -418,6 +441,7 @@ List<Product> demoProducts = [
     istablet: true,
   ),
   Product(
+    sales: 0,
     id: 22,
     images: [
       "assets/appleipad9-1.png",
@@ -433,6 +457,7 @@ List<Product> demoProducts = [
     isforyou: true,
   ),
   Product(
+    sales: 0,
     id: 23,
     images: [
       "assets/taba7-1.png",
@@ -446,6 +471,7 @@ List<Product> demoProducts = [
     istablet: true,
   ),
   Product(
+    sales: 0,
     id: 24,
     images: [
       "assets/hometechalfa-1.png",
@@ -458,6 +484,7 @@ List<Product> demoProducts = [
     istablet: true,
   ),
   Product(
+    sales: 0,
     id: 25,
     images: [
       "assets/lenovatabm10-1.png",
@@ -472,6 +499,7 @@ List<Product> demoProducts = [
     istablet: true,
   ),
   Product(
+      sales: 0,
       id: 26,
       images: [
         "assets/iphone13-1.png",
@@ -494,6 +522,7 @@ List<Product> demoProducts = [
       isspecificplayer: true,
       isforyou: true),
   Product(
+    sales: 0,
     id: 27,
     images: [
       "assets/iphone11-1.png",
@@ -516,6 +545,7 @@ List<Product> demoProducts = [
     isstelephone: true,
   ),
   Product(
+    sales: 0,
     id: 28,
     images: [
       "assets/oppoa74-1.png",
@@ -536,6 +566,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 29,
     images: [
       "assets/redminote12pro-1.png",
@@ -557,6 +588,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 30,
     images: [
       "assets/redminote11pro-1.png",
@@ -577,6 +609,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 31,
     images: [
       "assets/axentv-1.png",
@@ -593,6 +626,7 @@ List<Product> demoProducts = [
     istelevisions: true,
   ),
   Product(
+    sales: 0,
     id: 32,
     images: [
       "assets/telenova-1.png",
@@ -609,6 +643,7 @@ List<Product> demoProducts = [
     istelevisions: true,
   ),
   Product(
+    sales: 0,
     id: 33,
     images: [
       "assets/vesteltv-1.png",
@@ -626,6 +661,7 @@ List<Product> demoProducts = [
     istelevisions: true,
   ),
   Product(
+    sales: 0,
     id: 34,
     images: [
       "assets/sony1tv-1.png",
@@ -642,6 +678,7 @@ List<Product> demoProducts = [
     istelevisions: true,
   ),
   Product(
+    sales: 0,
     id: 35,
     images: [
       "assets/sony2tv-1.png",
@@ -660,6 +697,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+      sales: 0,
       id: 36,
       images: [
         "assets/patekphilippe-1.png",
@@ -674,6 +712,7 @@ List<Product> demoProducts = [
       isforyou: true,
       iswatch: true),
   Product(
+      sales: 0,
       id: 37,
       images: [
         "assets/korloff.png",
@@ -685,6 +724,7 @@ List<Product> demoProducts = [
       rating: 5.00,
       iswatch: true),
   Product(
+    sales: 0,
     id: 38,
     images: [
       "assets/huaweigt3-1.png",
@@ -705,6 +745,7 @@ List<Product> demoProducts = [
     isspecificplayer: true,
   ),
   Product(
+    sales: 0,
     id: 39,
     images: [
       "assets/applewatch8-1.png",

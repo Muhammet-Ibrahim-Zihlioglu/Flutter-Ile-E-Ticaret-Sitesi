@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zrhonline/Product/product.dart';
-import 'package:zrhonline/Product/product_card.dart';
+import 'package:zrhonline/Models/product.dart';
+import 'package:zrhonline/Models/product_card.dart';
 import 'package:zrhonline/Screen/Category_Screen/Component/categoryproductcard.dart';
 
 class PlayStation extends StatelessWidget {

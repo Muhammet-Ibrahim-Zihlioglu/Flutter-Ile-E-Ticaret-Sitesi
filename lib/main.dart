@@ -15,7 +15,9 @@ import 'package:zrhonline/Screen/Category_Screen/televisions.dart';
 import 'package:zrhonline/Screen/Favourites/favourites.dart';
 import 'package:zrhonline/Screen/Home/home.dart';
 import 'package:zrhonline/Screen/Login/loginpage.dart';
+import 'package:zrhonline/Screen/MyAccount/myaccount.dart';
 import 'package:zrhonline/Screen/Product_Details/details.dart';
+import 'package:zrhonline/Screen/SalesScreen/Sales.dart';
 import 'package:zrhonline/Screen/SpecialOffers/s_laptop.dart';
 import 'package:zrhonline/Screen/SpecialOffers/s_telephone.dart';
 import 'package:zrhonline/Screen/SpecialOffers/specificplayer.dart';
@@ -74,6 +76,8 @@ class MyApp extends StatelessWidget {
         "/television": (context) => const Television(),
         "/tablet": (context) => const Tablet(),
         "/playstation": (context) => const PlayStation(),
+        "/myaccount": (context) => MyAccount(),
+        "/sales": (context) => Sales(),
       },
       debugShowCheckedModeBanner: false, // debug yazısını kaldırmak için
       home: const MyHomePage(),

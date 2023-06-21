@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zrhonline/Product/product.dart';
+import 'package:zrhonline/Models/product.dart';
 import '../../../Component/defaultbutton.dart';
 
 class CheckoutCard extends StatefulWidget {
@@ -15,10 +15,12 @@ class _CheckoutCardState extends State<CheckoutCard> {
   @override
   Widget build(BuildContext context) {
     double toplam = 0;
+    double indirim = 0;
     setState(() {
       for (int i = 0; i < demoProducts.length; i++) {
         if (demoProducts[i].isCart == true) {
           toplam += demoProducts[i].price;
+          indirim = toplam * 80 / 100;
         }
       }
     });
@@ -44,24 +46,60 @@ class _CheckoutCardState extends State<CheckoutCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text.rich(
-                  TextSpan(
-                    text: "Total:\n",
-                    children: [
+                Column(
+                  children: [
+                    Text.rich(
                       TextSpan(
-                        text: " $toplam /TRY",
-                        style:
-                            const TextStyle(fontSize: 16, color: Colors.black),
+                        text: "Total:\n",
+                        children: [
+                          TextSpan(
+                            text: " $toplam /TRY",
+                            style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                decoration: TextDecoration.lineThrough),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text.rich(
+                      TextSpan(
+                        text: "İndirimli Tutar:\n",
+                        children: [
+                          TextSpan(
+                            text: " $indirim /TRY",
+                            style: const TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                decoration: TextDecoration.overline),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 10),
                 SizedBox(
                   width: (140),
                   child: DefaultButton(
                     text: "Check Out",
-                    press: () => Navigator.pushNamed(context, '/order'),
+                    press: () {
+                      setState(() {
+                        setState(() {
+                          for (int i = 0; i < demoProducts.length; i++) {
+                            if (demoProducts[i].isCart) {
+                              demoProducts[i].isCart = false;
+                              demoProducts[i].sales += 1;
+                              debugPrint(demoProducts[i].title +
+                                  '   ' +
+                                  demoProducts[i].sales.toString());
+                            }
+                          }
+                        });
+                      });
+                      Navigator.pushNamed(context, '/order');
+                    },
                   ),
                 ),
               ],

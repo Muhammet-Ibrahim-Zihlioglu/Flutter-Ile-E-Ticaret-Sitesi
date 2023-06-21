@@ -13,17 +13,38 @@ class Body extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
-          children: const [
-            SizedBox(height: 10),
-            DiscountBanner(),
-            Categories(),
-            SizedBox(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text(
+                  'NOT',
+                  style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color.fromARGB(255, 4, 0, 255),
+                      fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  '-Favorilere eklemek için beğeni butununa  uzun basılmalı. \n-Ürün detayına erişmek için kutuya çif tıklanmalı.',
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 4, 0, 255),
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
+            const DiscountBanner(),
+            const Categories(),
+            const SizedBox(
               height: 10,
             ),
-            SpecialOffers(),
-            SizedBox(height: 10),
-            PopularProducts(),
-            SizedBox(height: 10),
+            const SpecialOffers(),
+            const SizedBox(height: 10),
+            const PopularProducts(),
+            const SizedBox(height: 10),
           ],
         ),
       ),

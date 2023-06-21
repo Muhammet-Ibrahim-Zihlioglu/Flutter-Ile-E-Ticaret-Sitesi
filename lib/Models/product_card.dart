@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zrhonline/Product/product.dart';
+import 'package:zrhonline/Models/product.dart';
 import 'package:zrhonline/Screen/Product_Details/details.dart';
 
 class ProductCard extends StatefulWidget {
@@ -25,7 +25,7 @@ class _ProductCardState extends State<ProductCard> {
       child: SizedBox(
         width: widget.width,
         child: GestureDetector(
-          onTap: () => Navigator.pushNamed(
+          onLongPress: () => Navigator.pushNamed(
             context,
             "/details",
             arguments: ProductDetailsArguments(product: widget.product),
@@ -65,7 +65,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                   InkWell(
                     borderRadius: BorderRadius.circular(40),
-                    onTap: () {
+                    onDoubleTap: () {
                       setState(() {
                         widget.product.isFavourite =
                             !widget.product.isFavourite;

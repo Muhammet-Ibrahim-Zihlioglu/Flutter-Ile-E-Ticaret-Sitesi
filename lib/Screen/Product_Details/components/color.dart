@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/rounded%C4%B1conbtn.dart';
-import 'package:zrhonline/Product/product.dart';
+import 'package:zrhonline/Models/product.dart';
 
 class ColorDots extends StatefulWidget {
   const ColorDots({

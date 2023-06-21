@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/bottombar.dart';
-import 'package:zrhonline/Screen/Home/components/body.dart';
-import 'package:zrhonline/Screen/User/components/profilmenu.dart';
-
-import 'package:flutter/material.dart';
-import 'package:zrhonline/Component/bottombar.dart';
 import 'package:zrhonline/Screen/User/components/profilmenu.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({Key? key});
+  const Profile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +24,17 @@ class Profile extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const CircleAvatar(
-                radius: 75,
-                backgroundImage: AssetImage(
-                  "assets/profil.png",
-                ),
-              ),
+              const AnimationImage(),
               const SizedBox(height: 20),
               ProfileMenu(
                 text: "Hesabım",
                 icon: "assets/ikonlar/person.png",
-                press: () => {},
+                press: () => {Navigator.pushNamed(context, "/myaccount")},
               ),
+              ProfileMenu(
+                  text: "Satış Grafiği",
+                  icon: "assets/ikonlar/grafik.png",
+                  press: () => Navigator.pushNamed(context, "/sales")),
               ProfileMenu(
                 text: "Bildirimler",
                 icon: "assets/ikonlar/zil.png",
@@ -56,6 +50,49 @@ class Profile extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: const BottomBar(selectedMenu: MenuState.profile),
+    );
+  }
+}
+
+class AnimationImage extends StatefulWidget {
+  const AnimationImage({super.key});
+
+  @override
+  State<AnimationImage> createState() => _AnimationImage();
+}
+
+class _AnimationImage extends State<AnimationImage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller =
+        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+    _animation =
+        CurvedAnimation(parent: _controller, curve: Curves.easeInOutBack)
+          ..addListener(() => this.setState(() {}));
+    _controller.repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ScaleTransition(
+        scale: _animation,
+        child: const CircleAvatar(
+          radius: 85,
+          backgroundImage: AssetImage("assets/LOGO.png"),
+        ),
+      ),
     );
   }
 }

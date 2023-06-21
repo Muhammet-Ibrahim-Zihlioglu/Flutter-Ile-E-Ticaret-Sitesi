@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/bottombar.dart';
-import '../../Product/product.dart';
-import '../../Product/product_card.dart';
+import '../../Models/product.dart';
+import '../../Models/product_card.dart';
 import 'components/CheckoutCard.dart';
 
 class Cart_Screen extends StatelessWidget {
@@ -18,18 +18,25 @@ class Cart_Screen extends StatelessWidget {
           children: [
             Column(
               children: [
-                ...List.generate(
-                  demoProducts.length,
-                  (index) {
-                    if (demoProducts[index].isCart) {
-                      return ProductCard(product: demoProducts[index]);
-                    }
+                Dismissible(
+                    direction: DismissDirection.endToStart,
+                    key: UniqueKey(),
+                    child: Column(
+                      children: [
+                        ...List.generate(
+                          demoProducts.length,
+                          (index) {
+                            if (demoProducts[index].isCart) {
+                              return ProductCard(product: demoProducts[index]);
+                            }
 
-                    return const SizedBox(
-                      width: 0,
-                    );
-                  },
-                ),
+                            return const SizedBox(
+                              width: 0,
+                            );
+                          },
+                        ),
+                      ],
+                    ))
               ],
             ),
           ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zrhonline/Product/product.dart';
+import 'package:zrhonline/Models/product.dart';
 
 class ProductImages extends StatefulWidget {
   const ProductImages({

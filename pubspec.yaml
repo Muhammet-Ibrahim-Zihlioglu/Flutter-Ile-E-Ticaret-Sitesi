@@ -43,6 +43,10 @@ dependencies:
   cloud_firestore: ^4.7.1
   firebase_analytics: ^10.4.1
   firebase_analytics_web: ^0.5.4+1
+  sqflite: ^2.0.0+3
+  path: ^1.8.0
+  charts_flutter_new: ^0.12.0
+  fl_chart: ^0.62.0
 
 dev_dependencies:
   flutter_test:

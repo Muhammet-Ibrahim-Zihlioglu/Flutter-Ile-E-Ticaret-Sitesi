@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zrhonline/Component/bottombar.dart';
-import 'package:zrhonline/Product/product.dart';
-import 'package:zrhonline/Product/product_card.dart';
+import 'package:zrhonline/Models/product.dart';
+import 'package:zrhonline/Models/product_card.dart';
 
 class Favourites extends StatelessWidget {
   const Favourites({super.key});
